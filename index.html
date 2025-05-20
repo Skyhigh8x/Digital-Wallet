@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Phantom Wallet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Digital Phantom Wallet</h1>
+
+<!-- Clock Section -->
+<div class="clock-container">
+  <div class="analog-clock" id="currentClockContainer">
+    <canvas id="currentClock" width="150" height="150"></canvas>
+    <p>Current Time</p>
+  </div>
+
+  <div class="analog-clock" id="worldClockContainer">
+    <canvas id="worldClock" width="150" height="150"></canvas>
+    <p>
+      World Clock
+      <select id="worldTimezoneSelect" title="Select your timezone">
+        <option value="Asia/Karachi" selected>Asia/Karachi (Default)</option>
+      </select>
+    </p>
+  </div>
+</div>
+
+<select id="timezoneSelect" style="display:none;">
+  <option value="Asia/Karachi" selected>Asia/Karachi</option>
+</select>
+
+<div class="calendar-container">
+  <h3>Live Calendar</h3>
+  <div id="calendar"></div>
+  <select id="calendarType" title="Select Calendar Type">
+    <option value="gregorian" selected>Gregorian</option>
+    <option value="islamic">Islamic</option>
+    <option value="hebrew">Hebrew</option>
+  </select>
+</div>
+
+<form id="walletForm">
+  <label>Profile Picture</label>
+  <input type="file" accept="image/*" id="profilePic" onchange="loadImage(event)">
+  <img id="preview" src="" alt="Preview Image">
+
+  <label>Full Name</label><input type="text" name="fullName" required>
+  <label>Address</label><input type="text" name="address" required>
+  <label>Phone Number</label><input type="text" name="phone" required>
+  <label>Email</label><input type="email" name="email" required>
+  <label>Zip Code</label><input type="text" name="zip" required>
+  <label>City</label><input type="text" name="city" required>
+  <label>Province</label><input type="text" name="province" required>
+
+  <label>Card Number</label><input type="text" name="cardNumber" required>
+  <label>Card Type</label>
+  <select name="cardType">
+    <option>Visa</option>
+    <option>MasterCard</option>
+    <option>Amex</option>
+  </select>
+
+  <label>Expiry Date</label>
+  <select id="expiryMonth" name="expiryMonth" required></select>
+  <select id="expiryYear" name="expiryYear" required></select>
+
+  <label>CVV</label><input type="text" name="cvv" required>
+
+  <button type="button" onclick="saveWallet()">Save Wallet</button>
+  <button type="button" id="downloadButton">Download Wallet (HTML)</button>
+</form>
+
+<hr>
+<h3>Saved Wallets</h3>
+<div id="savedWallets"></div>
+
+<script src="scripts/app.js"></script>
+</body>
+</html>
